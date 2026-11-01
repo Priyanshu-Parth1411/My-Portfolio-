@@ -1,0 +1,13 @@
+3 file drive link 
+(more than 100mb )(GitHub limit is 25mb)
+
+
+X_test.npy=
+https://drive.google.com/file/d/1-eRume1NvQhFS4GDdGkUnimGaa1QXpZB/view?usp=drive_link
+
+
+mimo_data_raw.npy=
+https://drive.google.com/file/d/1_Pbz6PgCfDXcceZYhs-1DxpS5G018tpp/view?usp=sharing
+
+X_train.npy
+https://drive.google.com/file/d/1XuvrjZWbjRRymUmJYxbqN3Wdo1KIdKl8/view?usp=sharing

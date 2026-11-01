@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Priyanshu Parth — Electrical and Electronics Engineering student focused on robotics, embedded systems and intelligent machines.">
+  <meta name="theme-color" content="#08111f">
+  <title>Priyanshu Parth | Robotics & Embedded Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Priyanshu Parth home"><span class="brand-mark">PP</span><span>PRIYANSHU<span class="brand-dot">.</span></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span></button>
+    <nav class="nav" id="nav">
+      <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a>
+      <a href="#experience">Experience</a><a href="#certifications">Credentials</a><a href="#gallery">Photography</a>
+      <a class="nav-contact" href="#contact">Let's connect <span>↗</span></a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">☼</button>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> AVAILABLE FOR ROBOTICS / EMBEDDED OPPORTUNITIES</div>
+        <p class="hero-kicker">HELLO, I'M</p>
+        <h1>Priyanshu<br><span>Parth.</span></h1>
+        <h2>Building at the intersection of <em>electronics</em>, robotics & intelligent systems.</h2>
+        <p class="hero-intro">Electrical and Electronics Engineering student at MIT World Peace University, Pune. I enjoy bringing ideas into the physical world through embedded systems, sensors, control and applied AI.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#projects">Explore my work <span>↘</span></a><a class="btn btn-ghost" href="mailto:priyanshuparth09@gmail.com?subject=Portfolio%20enquiry">Request résumé ↗</a></div>
+        <div class="hero-meta"><span><b>01</b> / ENGINEERING PORTFOLIO</span><span>PUNE, INDIA</span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="visual-card">
+          <div class="visual-top"><span>FIELD NOTES / 2026</span><span class="live-dot"></span></div>
+          <div class="visual-core">
+            <div class="crosshair">+</div>
+            <div class="chip-graphic"><span>PP</span><i></i><i></i><i></i><i></i></div>
+            <div class="circuit-line line-a"></div><div class="circuit-line line-b"></div>
+            <div class="node node-a"></div><div class="node node-b"></div>
+            <div class="node node-c"></div>
+            <p class="visual-caption">SENSING <b>→</b> THINKING <b>→</b> ACTING</p>
+          </div>
+          <div class="visual-bottom"><span>ROBOTICS</span><span>EMBEDDED AI</span><span>CONTROL</span></div>
+        </div>
+        <div class="float-tag tag-one">C / C++</div><div class="float-tag tag-two">ROS · IoT</div>
+      </div>
+      <a class="scroll-cue" href="#about"><span></span> SCROLL TO EXPLORE</a>
+    </section>
+
+    <section class="section section-wrap about-section" id="about">
+      <div class="section-heading"><p class="eyebrow">01 / THE ENGINEER</p><h2>Curiosity, <span>made tangible.</span></h2></div>
+      <div class="about-grid">
+        <div class="about-photo-wrap">
+          <div class="photo-frame portrait-frame"><img src="assets/profile_picture.jpg" alt="Portrait of Priyanshu Parth"><span>ENGINEERING MINDSET / HUMAN CURIOSITY</span></div>
+          <div class="portrait-name">PRIYANSHU PARTH</div>
+          <div class="photo-stamp">PP</div>
+        </div>
+        <div class="about-copy">
+          <p class="lead">I’m an engineering student who likes understanding how things work — and then making them work in the real world.</p>
+          <p>My interests span robotics, embedded systems, electronics, sensor integration and applied machine learning. Through academic and team projects, I’ve worked with microcontrollers, single-board computers, computer vision pipelines and connected robotic platforms.</p>
+          <p>I value practical experimentation: wiring a sensor, debugging a communication issue, tuning a system, and learning from what happens outside the simulation.</p>
+          <div class="about-facts">
+            <div><span>EDUCATION</span><b>B.Tech · Electrical & Electronics Engineering</b></div>
+            <div><span>UNIVERSITY</span><b>MIT World Peace University, Pune</b></div>
+            <div><span>CGPA</span><b>7.68</b></div>
+          </div>
+          <a class="text-link" href="#contact">A little more about my work <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-wrap projects-section" id="projects">
+      <div class="section-heading heading-row"><div><p class="eyebrow">02 / SELECTED WORK</p><h2>Projects with a <span>purpose.</span></h2></div><p class="heading-note">A selection of engineering work across robotics, embedded systems and intelligent computation.</p></div>
+      <div class="project-grid">
+        <article class="project-card project-featured">
+          <div class="project-art spider-art"><div class="art-label">01 / ROBOTICS + COMPUTER VISION</div><div class="spider-graphic"><div class="robot-eye"></div><div class="robot-body"></div><i></i><i></i><i></i><i></i><span>SPIDER</span></div><div class="art-foot">PREDICT · DETECT · RESPOND</div></div>
+          <div class="project-info"><div class="project-topline"><span>CAPSTONE PROJECT</span><span>2026–27</span></div><h3>SPIDER <small>— Pedestrian Intent Detection & Emergency Response</small></h3><p>A robotic testbed exploring anticipatory pedestrian-crossing prediction and emergency response. The pipeline combines YOLOv8 detection, ByteTrack tracking, motion features and a stacked LSTM classifier, with a front ToF sensor as an independent safety stop.</p><div class="tags"><span>YOLOv8</span><span>ByteTrack</span><span>LSTM</span><span>ROS Noetic</span><span>Jetson Nano</span><span>Duckiebot</span></div><button class="details-btn" data-project="spider">View project details <b>↗</b></button></div>
+        </article>
+        <article class="project-card">
+          <div class="project-art sara-art"><div class="art-label">02 / MECHATRONICS</div><div class="quad"><div class="quad-body"></div><i></i><i></i><i></i><i></i></div><div class="art-foot">SARA / QUADRUPED PLATFORM</div></div>
+          <div class="project-info"><div class="project-topline"><span>ROBOTICS</span><span>2026</span></div><h3>SARA Quadruped Robot</h3><p>A four-legged quadruped built around an ESP32 controller, eight MG90S micro servos and a browser-based dashboard hosted directly by the ESP32. The interface supports directional motion commands, stand/sleep poses, per-servo angle tuning and coordinated gait parameters.</p><div class="tags"><span>ESP32</span><span>Servo Control</span><span>Embedded C++</span><span>Actuators</span></div><button class="details-btn" data-project="sara">View project details <b>↗</b></button></div>
+        </article>
+        <article class="project-card">
+          <div class="project-art classroom-art"><div class="art-label">03 / CONNECTED SYSTEMS</div><div class="classroom"><div class="class-screen"></div><div class="class-desk"></div><div class="wifi-symbol">)))</div></div><div class="art-foot">SENSE · AUTOMATE · CONNECT</div></div>
+          <div class="project-info"><div class="project-topline"><span>IoT APPLICATION</span><span>2026</span></div><h3>IoT Smart Classroom Automation</h3><p>An IoT-based classroom automation project bringing sensor inputs and connected control together for a smarter learning environment.</p><div class="tags"><span>IoT</span><span>ESP32</span><span>Sensors</span><span>Automation</span></div><button class="details-btn" data-project="classroom">View project details <b>↗</b></button></div>
+        </article>
+        <article class="project-card">
+          <div class="project-art mimo-art"><div class="art-label">04 / DEEP LEARNING</div><div class="signal-visual"><span>01</span><span>10</span><span>11</span><span>01</span><span>Σ</span></div><div class="art-foot">WIRELESS CHANNEL ESTIMATION</div></div>
+          <div class="project-info"><div class="project-topline"><span>RESEARCH / ML</span><span>2025–26</span></div><h3>Deep Learning-Based Wireless Channel Estimation</h3><p>A deep-learning study of channel estimation for 128×128 Massive MIMO. The supplied implementation generates time-varying Rayleigh channel samples, trains a ConvLSTM2D model and evaluates NMSE against a simulated Least Squares baseline across SNR values.</p><div class="tags"><span>Python</span><span>Deep Learning</span><span>ConvLSTM2D</span><span>Massive MIMO</span></div><button class="details-btn" data-project="mimo">View project details <b>↗</b></button></div>
+        </article>
+      </div>
+      <p class="project-note">Project descriptions are intentionally concise; detailed architecture, results and implementation notes can be added as project documentation is finalised.</p>
+    </section>
+
+    <section class="section section-wrap skills-section" id="skills">
+      <div class="section-heading"><p class="eyebrow">03 / TOOLKIT</p><h2>Tools I use to <span>make things.</span></h2></div>
+      <div class="skills-layout">
+        <div class="skills-intro"><p class="lead">A hands-on toolkit for building, connecting and experimenting.</p><p>I’m continually expanding my capabilities through projects and practical problem-solving. The categories below reflect technologies and areas included in my current engineering work.</p><div class="skill-orbit"><span>C</span><span>⚡</span><span>IoT</span><span>AI</span><span>ROS</span></div></div>
+        <div class="skill-list">
+          <div class="skill-row"><span class="skill-index">01</span><div><h3>Programming</h3><p>C · C++ · Python · Java · JavaScript</p></div><span class="skill-symbol">⌘</span></div>
+          <div class="skill-row"><span class="skill-index">02</span><div><h3>Robotics & Embedded Systems</h3><p>ROS Noetic · Embedded Systems · IoT · Servo Control · Sensor & Actuator Integration</p></div><span class="skill-symbol">⌁</span></div>
+          <div class="skill-row"><span class="skill-index">03</span><div><h3>Hardware Platforms</h3><p>ESP32 · ESP8266 · STM32 · Arduino · Raspberry Pi · NVIDIA Jetson Nano · Duckiebot</p></div><span class="skill-symbol">▦</span></div>
+          <div class="skill-row"><span class="skill-index">04</span><div><h3>AI, ML & Computer Vision</h3><p>TensorFlow · YOLOv8 · ByteTrack · Deep Learning</p></div><span class="skill-symbol">◉</span></div>
+          <div class="skill-row"><span class="skill-index">05</span><div><h3>Tools & Platforms</h3><p>Ubuntu / Linux · Docker · Git · GitHub · VS Code</p></div><span class="skill-symbol">⌘</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-wrap experience-section" id="experience">
+      <div class="section-heading"><p class="eyebrow">04 / BEYOND THE BUILD</p><h2>Teamwork is part of the <span>engineering.</span></h2></div>
+      <p class="section-intro">I’ve also contributed to student-led events and technical teams, taking responsibility for coordination and on-ground execution.</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2024</span><div><h3>Technical Team Head <span>— National Scientist Round Table Conference</span></h3><p>Led the technical team and coordinated event-related technical operations.</p></div><span class="timeline-type">LEADERSHIP</span></div>
+        <div class="timeline-item"><span class="timeline-year">2024</span><div><h3>Technical Team Head <span>— Shram Parihar, HACK-MIT</span></h3><p>Managed technical team activities and supported event execution.</p></div><span class="timeline-type">LEADERSHIP</span></div>
+        <div class="timeline-item"><span class="timeline-year">2024</span><div><h3>Technical Head <span>— Innovation Hub Club</span></h3><p>Contributed to club activities and technical initiatives; member through 2024.</p></div><span class="timeline-type">STUDENT CLUB</span></div>
+        <div class="timeline-item"><span class="timeline-year">2024</span><div><h3>Team Coordination Head <span>— Vasundhara</span></h3><p>Coordinated volunteers and supported event operations.</p></div><span class="timeline-type">COORDINATION</span></div>
+        <div class="timeline-item"><span class="timeline-year">2024</span><div><h3>Volunteer <span>— RIDE</span></h3><p>Supported event activities and on-ground coordination.</p></div><span class="timeline-type">VOLUNTEERING</span></div>
+        <div class="timeline-item"><span class="timeline-year">2024</span><div><h3>Hackathon Participant</h3><p>Participated in a hackathon and collaborated in a time-bound problem-solving environment.</p></div><span class="timeline-type">PARTICIPATION</span></div>
+      </div>
+    </section>
+
+    <section class="section section-wrap credentials-section" id="certifications">
+      <div class="section-heading heading-row"><div><p class="eyebrow">05 / LEARNING TRAIL</p><h2>Credentials & <span>curiosity.</span></h2></div><p class="heading-note">Verified learning and assessment credentials. Select a certificate to open the original document.</p></div>
+      <div class="certificate-grid">
+        <a class="certificate-card certificate-featured" href="assets/AWS-Cloud-Practitioner-Essentials-FSP.pdf" target="_blank" rel="noreferrer"><img src="assets/aws-cloud-practitioner-certificate.jpg" alt="AWS Cloud Practitioner Essentials FutureSkills Prime Gold certificate"><span><span><strong>AWS Cloud Practitioner Essentials_FSP</strong><small>FutureSkills Prime · NASSCOM · 14 Oct 2026 · Gold · 97%</small></span><b>Open PDF ↗</b></span></a>
+        <a class="certificate-card" href="assets/Certificate-1.jpg" target="_blank" rel="noreferrer"><img src="assets/Certificate-1.jpg" alt="Previously uploaded certificate 1"><span>Additional certificate 01 <b>↗</b></span></a>
+        <a class="certificate-card" href="assets/Certificate-2.jpg" target="_blank" rel="noreferrer"><img src="assets/Certificate-2.jpg" alt="Previously uploaded certificate 2"><span>Additional certificate 02 <b>↗</b></span></a>
+        <a class="certificate-card" href="assets/Certificate-3.jpg" target="_blank" rel="noreferrer"><img src="assets/Certificate-3.jpg" alt="Previously uploaded certificate 3"><span>Additional certificate 03 <b>↗</b></span></a>
+      </div>
+      <p class="small-note">The AWS item is an assessment certificate for AWS Cloud Practitioner Essentials_FSP, not the separate AWS Certified Cloud Practitioner certification.</p>
+    </section>
+
+    <section class="section section-wrap gallery-section" id="gallery">
+      <div class="section-heading heading-row"><div><p class="eyebrow">06 / OUTSIDE THE CIRCUIT</p><h2>Frames from <span>my perspective.</span></h2></div><p class="heading-note">Photography and the little details that make the world interesting.</p></div>
+      <div class="gallery-grid" id="galleryGrid">
+        <figure class="gallery-item gallery-large"><img src="assets/1.jpg" alt="Photography gallery image 1" loading="lazy"><figcaption>01 / OBSERVE</figcaption></figure>
+        <figure class="gallery-item"><img src="assets/2.jpg" alt="Photography gallery image 2" loading="lazy"><figcaption>02 / DETAIL</figcaption></figure>
+        <figure class="gallery-item"><img src="assets/3.jpg" alt="Photography gallery image 3" loading="lazy"><figcaption>03 / MOMENT</figcaption></figure>
+        <figure class="gallery-item"><img src="assets/4.jpg" alt="Photography gallery image 4" loading="lazy"><figcaption>04 / LIGHT</figcaption></figure>
+        <figure class="gallery-item gallery-wide"><img src="assets/5.jpg" alt="Photography gallery image 5" loading="lazy"><figcaption>05 / PERSPECTIVE</figcaption></figure>
+      </div>
+      <div class="gallery-controls"><button id="loadMorePhotos" class="btn btn-ghost">Explore more photographs +</button></div>
+    </section>
+
+    <section class="contact-section section-wrap" id="contact">
+      <p class="eyebrow">07 / START A CONVERSATION</p>
+      <h2>Have a problem worth<br><span>building for?</span></h2>
+      <p>I’m interested in robotics, embedded systems and engineering opportunities where I can learn, contribute and build.</p>
+      <a class="btn btn-primary" href="mailto:priyanshuparth09@gmail.com">Get in touch <span>↗</span></a>
+      <div class="contact-links">
+        <a href="https://github.com/Priyanshu-Parth1411" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a href="mailto:priyanshuparth09@gmail.com?subject=Résumé%20request">Résumé on request ↗</a>
+      </div>
+      <div class="contact-bottom"><span>PRIYANSHU PARTH / 2026</span><a href="#home">BACK TO TOP ↑</a></div>
+    </section>
+  </main>
+
+  <footer><span>DESIGNED & BUILT WITH CURIOSITY.</span><span>PUNE, INDIA · <span id="year"></span></span></footer>
+
+  <div class="modal" id="projectModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" data-close-modal aria-label="Close project details">×</button>
+      <p class="eyebrow" id="modalEyebrow">PROJECT / DETAILS</p>
+      <h2 id="modalTitle"></h2><p id="modalDescription"></p>
+      <div class="modal-detail-grid"><div><span>OVERVIEW</span><p id="modalOverview"></p></div><div><span>TECHNOLOGIES</span><p id="modalTech"></p></div></div>
+      <div id="modalMedia" class="modal-media"></div>
+      <a id="modalResource" class="text-link" href="#" target="_blank" rel="noreferrer">Open project resource ↗</a>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

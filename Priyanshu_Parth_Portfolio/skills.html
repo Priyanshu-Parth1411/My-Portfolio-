@@ -1,0 +1,530 @@
+Creative Skills<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Skills</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --accent-color: #6366f1;
+            --accent-hover: #4f46e5;
+            --text-color: #1e293b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --card-shadow: 0 10px 20px rgba(99, 102, 241, 0.1);
+            --nav-bg: #ffffff;
+            --border-color: rgba(99, 102, 241, 0.2);
+            --gradient-start: #6366f1;
+            --gradient-end: #818cf8;
+        }
+
+        [data-theme="dark"] {
+            --accent-color: #818cf8;
+            --accent-hover: #6366f1;
+            --text-color: #f1f5f9;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            --nav-bg: #1e293b;
+            --border-color: rgba(129, 140, 248, 0.2);
+            --gradient-start: #818cf8;
+            --gradient-end: #a5b4fc;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes slideInFromLeft {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInFromRight {
+            0% { transform: translateX(100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 99999;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transform: translateZ(0);
+            will-change: transform;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-hover);
+            transform: scale(1.1) translateZ(0);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .theme-toggle i {
+            font-size: 1.5rem;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+        }
+
+        .page-header {
+            background: linear-gradient(-45deg, var(--gradient-start), var(--gradient-end), #4f46e5, #818cf8);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: white;
+            padding: 8rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.2)"/></svg>');
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: slideInFromLeft 1s ease-out;
+            color: white;
+            background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-header p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            animation: slideInFromRight 1s ease-out;
+            color: white;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .skill-category.compact {
+            grid-column: span 1;
+            max-width: 100%;
+        }
+
+        @media (min-width: 992px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .skill-category.compact {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+            }
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.15);
+            border-color: var(--accent-color);
+            animation: pulse 1.5s infinite;
+        }
+
+        .skill-category h3 {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: slideInFromLeft 1s ease-out;
+        }
+
+        .skill-category h3 i {
+            font-size: 1.8rem;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 1rem;
+            border-radius: 8px;
+            background: var(--card-bg);
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease-out forwards;
+            animation-delay: calc(var(--item-index, 0) * 0.1s);
+        }
+
+        .skill-item.animate-fade-up {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .skill-item:hover {
+            transform: translateX(5px);
+            background: var(--border-color);
+        }
+
+        .skill-name {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 3;
+            animation: slideInFromRight 1s ease-out;
+        }
+
+        .skill-level {
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            border-radius: 4px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .skill-item.animate-fade-up .skill-progress {
+            transform: scaleX(1);
+        }
+
+        .skill-description {
+            color: var(--text-color);
+            font-size: 1rem;
+            opacity: 1;
+            margin-top: 0.5rem;
+            line-height: 1.5;
+            position: relative;
+            z-index: 3;
+        }
+
+        .section {
+            padding: 4rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-card {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .skill-card:hover {
+            animation: none;
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .skill-card:hover .skill-icon {
+            animation: none;
+            transform: scale(1.1);
+        }
+
+        .progress-bar {
+            animation: slideInFromLeft 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="top-nav">
+        <div class="container">
+            <a href="index.html" class="logo">My Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="skills.html" class="active">Skills</a></li>
+                <li><a href="snippets.html">Code Snippets</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>My Skills</h1>
+            <p>Technical expertise and personal strengths I've developed through my journey in technology</p>
+        </div>
+    </section>
+
+    <!-- Skills Content -->
+    <section class="section">
+        <div class="container">
+            <div class="skills-grid">
+                <div class="skill-category animate-on-scroll">
+                    <h3><i class="fas fa-code"></i> Technical Skills</h3>
+                    <div class="skill-items">
+                        <div class="skill-item" style="--item-index: 1">
+                            <span class="skill-name">Web Development</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                            <p class="skill-description">Full-stack development with HTML, CSS, and JavaScript. Creating responsive and interactive web applications.</p>
+                        </div>
+                        <div class="skill-item" style="--item-index: 2">
+                            <span class="skill-name">Java Programming</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                            <p class="skill-description">Object-oriented programming, data structures, and application development. Building JARVIS-style assistants and smart systems.</p>
+                        </div>
+                        <div class="skill-item" style="--item-index: 3">
+                            <span class="skill-name">C/C++</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                            <p class="skill-description">System programming, embedded systems, and performance optimization. Developing efficient solutions for hardware integration.</p>
+                        </div>
+                        <div class="skill-item" style="--item-index: 4">
+                            <span class="skill-name">Arduino Development</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                            <p class="skill-description">Creating smart devices like temperature-based fan controllers and security spider robots. Hardware programming and sensor integration.</p>
+                        </div>
+                        <div class="skill-item" style="--item-index: 5">
+                            <span class="skill-name">AI & ML</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                            <p class="skill-description">Specializing in Artificial Intelligence and Machine Learning as part of my B.Tech curriculum. Exploring intelligent systems and automation.</p>
+                        </div>
+                        <div class="skill-item" style="--item-index: 6">
+                            <span class="skill-name">Electronics</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                            <p class="skill-description">Core knowledge in Electronics and Communication Engineering. Understanding circuit design and electronic systems.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <h3><i class="fas fa-users"></i> Soft Skills</h3>
+                    <div class="skill-items">
+                        <div class="skill-item" style="--item-index: 1">
+                            <span class="skill-name">Leadership</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                            <p class="skill-description">Natural team player with ability to guide and motivate others. Leading projects and collaborative efforts effectively.</p>
+                        </div>
+                        <div class="skill-item" style="--item-index: 2">
+                            <span class="skill-name">Problem Solving</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                            <p class="skill-description">Strong analytical mindset for tackling complex challenges. Finding creative solutions to real-world problems.</p>
+                        </div>
+                        <div class="skill-item" style="--item-index: 3">
+                            <span class="skill-name">Adaptability</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                            <p class="skill-description">Quick learner who embraces new technologies and methodologies. Flexible approach to changing environments.</p>
+                        </div>
+                        <div class="skill-item" style="--item-index: 4">
+                            <span class="skill-name">Critical Thinking</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                            <p class="skill-description">Analytical approach to evaluating situations and making informed decisions. Strong focus on logical reasoning.</p>
+                        </div>
+                        <div class="skill-item" style="--item-index: 5">
+                            <span class="skill-name">Emotional Intelligence</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                            <p class="skill-description">Understanding and managing emotions effectively. Building strong relationships and maintaining professional composure.</p>
+                        </div>
+                        <div class="skill-item" style="--item-index: 6">
+                            <span class="skill-name">Attention to Detail</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                            <p class="skill-description">Meticulous approach to work, ensuring high quality and precision in all projects and tasks.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category animate-on-scroll compact">
+                    <h3><i class="fas fa-palette"></i> Creative Skills</h3>
+                    <div class="skill-items">
+                        <div class="skill-item" style="--item-index: 1">
+                            <span class="skill-name">Nature Photography</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                            <p class="skill-description">Capturing the beauty of nature through photography. Finding inspiration in outdoor environments.</p>
+                        </div>
+                        <div class="skill-item" style="--item-index: 2">
+                            <span class="skill-name">Sketching</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                            <p class="skill-description">Expressing creativity through drawing and sketching. Developing visual thinking skills.</p>
+                        </div>
+                        <div class="skill-item" style="--item-index: 3">
+                            <span class="skill-name">Photo Editing</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                            <p class="skill-description">Enhancing and transforming images using digital tools. Creating visually appealing content.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category animate-on-scroll compact">
+                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <div class="skill-items">
+                        <div class="skill-item" style="--item-index: 1">
+                            <span class="skill-name">B.Tech in ECE</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 100%"></div>
+                            </div>
+                            <p class="skill-description">Electronics and Communication Engineering with AI & ML specialization at MIT World Peace University, Pune</p>
+                        </div>
+                        <div class="skill-item" style="--item-index: 2">
+                            <span class="skill-name">Academic Focus</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                            <p class="skill-description">Strong foundation in electronics, programming, and emerging technologies. Continuous learning and skill development.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-up');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Update observer to include skill categories and items
+        document.querySelectorAll('.skill-category, .skill-item').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html> 

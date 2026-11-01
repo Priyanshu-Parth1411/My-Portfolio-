@@ -1,0 +1,3546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Snippets - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <style>
+        .snippet-preview {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+            background: #000;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .neon-btn {
+            color: #0ff;
+            padding: 15px 30px;
+            font-size: 20px;
+            background: transparent;
+            border: 2px solid #0ff;
+            border-radius: 10px;
+            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff inset;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .neon-btn:hover {
+            box-shadow: 0 0 20px #0ff, 0 0 40px #0ff inset;
+        }
+
+        .press-btn {
+            background: #007bff;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 8px #0056b3;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .press-btn:active {
+            box-shadow: 0 2px #0056b3;
+            transform: translateY(6px);
+        }
+
+        .gradient-btn {
+            padding: 12px 30px;
+            font-size: 18px;
+            color: white;
+            background: transparent;
+            border: 2px solid;
+            border-image: linear-gradient(45deg, #ff6ec4, #7873f5) 1;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .gradient-btn:hover {
+            background: linear-gradient(45deg, #ff6ec4, #7873f5);
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 110, 196, 0.6);
+        }
+
+        .split-btn {
+            background: #222;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .split-btn span {
+            display: inline-block;
+            transition: 0.4s ease;
+        }
+
+        .split-btn:hover span:first-child {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        .split-btn:hover span:last-child {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .split-btn span:last-child {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, 100%);
+            opacity: 0;
+        }
+
+        .shine-btn {
+            position: relative;
+            padding: 15px 35px;
+            font-size: 18px;
+            color: #fff;
+            background: #444;
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .shine-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -75%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                rgba(255, 255, 255, 0.2) 0%,
+                rgba(255, 255, 255, 0.8) 50%,
+                rgba(255, 255, 255, 0.2) 100%
+            );
+            transform: skewX(-20deg);
+        }
+
+        .shine-btn:hover::before {
+            animation: shine 0.75s ease-in-out;
+        }
+
+        @keyframes shine {
+            from {
+                left: -75%;
+            }
+            to {
+                left: 125%;
+            }
+        }
+
+        .pulse-btn {
+            background: #e91e63;
+            color: white;
+            padding: 15px 40px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(233, 30, 99, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(233, 30, 99, 0);
+            }
+        }
+
+        .magnetic-container {
+            position: relative;
+            width: 200px;
+            height: 70px;
+        }
+
+        .magnetic-btn {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 20px;
+            background: #6200ea;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .liquid-button {
+            position: relative;
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 20px;
+            color: #fff;
+            background: #6200ea;
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .liquid-button::before,
+        .liquid-button::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.3), transparent 70%);
+            opacity: 0.5;
+            transform: translateX(0) translateY(0);
+            animation: wave 4s linear infinite;
+            z-index: 0;
+        }
+
+        .liquid-button::after {
+            animation-delay: 2s;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: translateX(-25%) translateY(0);
+            }
+            50% {
+                transform: translateX(25%) translateY(-10%);
+            }
+            100% {
+                transform: translateX(-25%) translateY(0);
+            }
+        }
+
+        .liquid-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .flip-container {
+            perspective: 1000px;
+        }
+
+        .flip-button {
+            width: 200px;
+            height: 60px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        .flip-button:hover {
+            transform: rotateY(180deg);
+        }
+
+        .front,
+        .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            line-height: 60px;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            border-radius: 10px;
+            backface-visibility: hidden;
+        }
+
+        .front {
+            background: #6200ea;
+        }
+
+        .back {
+            background: #03dac6;
+            transform: rotateY(180deg);
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .social-buttons a {
+            width: 50px;
+            height: 50px;
+            background: #222;
+            color: white;
+            font-size: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-buttons a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px currentColor;
+        }
+
+        .social-buttons a.facebook { color: #3b5998; }
+        .social-buttons a.twitter { color: #1da1f2; }
+        .social-buttons a.instagram { color: #e1306c; }
+        .social-buttons a.linkedin { color: #0077b5; }
+        .social-buttons a.youtube { color: #ff0000; }
+
+        @media (max-width: 768px) {
+            .social-buttons a {
+                width: 37.5px;
+                height: 37.5px;
+                font-size: 15px;
+            }
+        }
+
+        .glass-card {
+            width: 320px;
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+
+        .glass-card:hover {
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3), 0 0 60px rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-card h2 {
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .glass-card p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .card {
+            width: 320px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            color: white;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card h2 {
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            margin-bottom: 1.5rem;
+            font-size: 14px;
+            color: #f1f1f1;
+        }
+
+        .glow-btn {
+            padding: 10px 25px;
+            font-size: 16px;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            border-radius: 30px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .glow-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px #ffffff, 0 0 30px #ffffff, 0 0 60px #ffffff;
+            border-color: #ffffff;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .flip-card-front {
+            background: linear-gradient(135deg, #00c3ff, #ffff1c);
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #fc466b, #3f5efb);
+            transform: rotateY(180deg);
+        }
+
+        /* Parallax Card */
+        .parallax-card {
+            width: 300px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.1s ease;
+            transform-style: preserve-3d;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .parallax-card h2 {
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .parallax-card p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Gradient Overlay Card */
+        .gradient-card {
+            position: relative;
+            width: 320px;
+            height: 420px;
+            overflow: hidden;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .gradient-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gradient-card .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, rgba(255,0,150,0.6), rgba(0,204,255,0.6));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .gradient-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .gradient-card:hover .overlay {
+            opacity: 1;
+        }
+
+        .gradient-card .card-content {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #fff;
+            z-index: 2;
+        }
+
+        .gradient-card .card-content h3 {
+            margin: 0 0 10px;
+            font-size: 24px;
+        }
+
+        .gradient-card .card-content p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* Hover Lift Card */
+        .lift-card {
+            width: 300px;
+            height: 400px;
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .lift-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .lift-card h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .lift-card p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Spotlight Card */
+        .spotlight-card {
+            position: relative;
+            width: 320px;
+            height: 400px;
+            background: #222;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        .spotlight-card::before {
+            content: '';
+            position: absolute;
+            top: var(--y, 50%);
+            left: var(--x, 50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 80%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            transition: 0.1s;
+        }
+
+        .spotlight-card h2 {
+            margin: 30px;
+            font-size: 24px;
+        }
+
+        .spotlight-card p {
+            margin: 0 30px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        /* Morphing Card */
+        .morph-card {
+            width: 300px;
+            height: 200px;
+            background: #ffffff10;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            color: #fff;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .morph-card:hover {
+            width: 340px;
+            height: 250px;
+            border-radius: 40px;
+            background: linear-gradient(135deg, #ff9a9e40, #fad0c440);
+        }
+
+        .morph-card h2 {
+            margin: 0 0 10px;
+            font-size: 22px;
+        }
+
+        .morph-card p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Tilt Card */
+        .tilt-card {
+            width: 320px;
+            height: 420px;
+            background: linear-gradient(135deg, #ff9966, #ff5e62);
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            transition: transform 0.1s;
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+            transform-style: preserve-3d;
+        }
+
+        .tilt-card h2 {
+            margin-bottom: 15px;
+            font-size: 26px;
+        }
+
+        .tilt-card p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Shine Effect Card */
+        .shine-card {
+            position: relative;
+            width: 320px;
+            height: 420px;
+            background: #1c1c1c;
+            color: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .shine-card h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .shine-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .shine-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                120deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.4) 50%,
+                rgba(255, 255, 255, 0.1) 100%
+            );
+            transform: rotate(25deg);
+            transition: all 0.6s ease;
+            pointer-events: none;
+        }
+
+        .shine-card:hover::before {
+            top: 100%;
+            left: 100%;
+        }
+
+        /* Animated Border Card */
+        .animated-border-card {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            padding: 20px;
+            background: #121212;
+            color: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            z-index: 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .animated-border-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                #ff00cc,
+                #3333ff,
+                #00ffcc,
+                #ffcc00,
+                #ff00cc
+            );
+            background-size: 400%;
+            z-index: -1;
+            animation: rotateBorder 6s linear infinite;
+        }
+
+        .animated-border-card::after {
+            content: "";
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            right: 3px;
+            bottom: 3px;
+            background: #121212;
+            border-radius: 13px;
+            z-index: 1;
+        }
+
+        .animated-border-card h2 {
+            margin: 0 0 10px;
+            font-size: 22px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .animated-border-card p {
+            font-size: 14px;
+            line-height: 1.5;
+            z-index: 2;
+            position: relative;
+        }
+
+        @keyframes rotateBorder {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            font-size: 64px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #ff00cc, #3333ff, #00ffcc);
+            background-size: 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            animation: shineText 4s linear infinite;
+        }
+
+        @keyframes shineText {
+            0% {
+                background-position: 0% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        /* Typing Animation */
+        .typing-container {
+            font-size: 24px;
+            border-right: 2px solid #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 4s steps(24) infinite,
+                       blink 0.5s step-end infinite;
+        }
+
+        @keyframes typing {
+            0% { width: 0; }
+            50% { width: 24ch; }
+            70% { width: 24ch; }
+            100% { width: 0; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* Text Reveal */
+        .reveal-text {
+            font-size: 48px;
+            color: #fff;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .reveal-text:hover {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Text Glitch Effect */
+        .glitch {
+            position: relative;
+            color: #00ffcc;
+            font-size: 64px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            overflow: hidden;
+            color: #00ffff;
+            background: #000;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 red;
+            animation: glitchTop 1s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 blue;
+            animation: glitchBottom 1.2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitchTop {
+            0% { clip-path: inset(0 0 90% 0); }
+            25% { clip-path: inset(10% 0 80% 0); }
+            50% { clip-path: inset(20% 0 60% 0); }
+            75% { clip-path: inset(30% 0 40% 0); }
+            100% { clip-path: inset(40% 0 20% 0); }
+        }
+
+        @keyframes glitchBottom {
+            0% { clip-path: inset(80% 0 0 0); }
+            25% { clip-path: inset(60% 0 10% 0); }
+            50% { clip-path: inset(40% 0 20% 0); }
+            75% { clip-path: inset(20% 0 30% 0); }
+            100% { clip-path: inset(0 0 40% 0); }
+        }
+
+        /* Text Wave Animation */
+        .wave {
+            font-size: 48px;
+            display: flex;
+            gap: 5px;
+        }
+
+        .wave span {
+            display: inline-block;
+            animation: wave 1.5s infinite ease-in-out;
+        }
+
+        /* Stagger the wave delay for each letter */
+        .wave span:nth-child(1) { animation-delay: 0s; }
+        .wave span:nth-child(2) { animation-delay: 0.1s; }
+        .wave span:nth-child(3) { animation-delay: 0.2s; }
+        .wave span:nth-child(4) { animation-delay: 0.3s; }
+        .wave span:nth-child(5) { animation-delay: 0.4s; }
+        .wave span:nth-child(6) { animation-delay: 0.5s; }
+        .wave span:nth-child(7) { animation-delay: 0.6s; }
+        .wave span:nth-child(8) { animation-delay: 0.7s; }
+        .wave span:nth-child(9) { animation-delay: 0.8s; }
+        .wave span:nth-child(10) { animation-delay: 0.9s; }
+
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Text Shadow Effect */
+        .shadow-text {
+            font-size: 60px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow:
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff,
+                0 0 40px #0ff;
+        }
+
+        /* Text Split Effect */
+        .split-text {
+            position: relative;
+            font-size: 40px;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+            overflow: hidden;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .split-text::before,
+        .split-text::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            width: 100%;
+            transition: 0.4s ease;
+        }
+
+        .split-text::before {
+            top: 0;
+            clip-path: inset(0 0 50% 0);
+        }
+
+        .split-text::after {
+            bottom: 0;
+            clip-path: inset(50% 0 0 0);
+        }
+
+        .split-text:hover::before {
+            transform: translateY(-10px);
+            color: #00f2ff;
+        }
+
+        .split-text:hover::after {
+            transform: translateY(10px);
+            color: #ff00ff;
+        }
+
+        /* Hide the original text behind the pseudo-elements */
+        .split-text span {
+            opacity: 0;
+        }
+
+        /* Text Fill Animation */
+        .fill-text {
+            font-size: 60px;
+            font-weight: bold;
+            color: transparent;
+            -webkit-text-stroke: 1px #00f2ff;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .fill-text::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            color: #00f2ff;
+            white-space: nowrap;
+            overflow: hidden;
+            transition: width 0.6s ease;
+        }
+
+        .fill-text:hover::after {
+            width: 100%;
+        }
+
+        /* Text Stroke Animation */
+        .stroke-text {
+            font-size: 40px;
+            fill: none;
+            stroke: #00f2ff;
+            stroke-width: 2px;
+            stroke-dasharray: 500;
+            stroke-dashoffset: 500;
+            animation: drawText 5.5s ease infinite;
+        }
+
+        @keyframes drawText {
+            0% {
+                stroke-dashoffset: 500;
+            }
+            72.7% {
+                stroke-dashoffset: 0;
+            }
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        /* Text Gradient Animation */
+        .gradient-animate {
+            font-size: 60px;
+            font-weight: bold;
+            background: linear-gradient(
+                -45deg,
+                #ff0000,
+                #ff9900,
+                #33cc33,
+                #3399ff,
+                #cc33ff
+            );
+            background-size: 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: animateGradient 5s ease infinite;
+        }
+
+        @keyframes animateGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Dot Loading Animation */
+        .dot-loader {
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #00f2ff;
+            animation: bounce 1.2s infinite ease-in-out;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        /* Spinner Loading Animation */
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #222;
+            border-top: 6px solid #00f2ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Progress Bar Animation */
+        .progress-wrapper {
+            width: 80%;
+            max-width: 500px;
+            height: 25px;
+            background: #222;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, #00f2ff, #00ff94);
+            animation: progressFill 4s ease-out infinite;
+            border-radius: 50px 0 0 50px;
+        }
+
+        @keyframes progressFill {
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Circle Loading Animation */
+        .circle-loader {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #333;
+            border-top: 6px solid #00f2ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Skeleton Loading Animation */
+        .skeleton-loader {
+            width: 300px;
+            padding: 20px;
+        }
+
+        .skeleton {
+            background: #333;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skeleton::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .title {
+            width: 80%;
+            height: 20px;
+        }
+
+        .text-line {
+            width: 100%;
+            height: 15px;
+        }
+
+        .text-line.short {
+            width: 60%;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Pulse Loading Animation */
+        .pulse-loader {
+            width: 40px;
+            height: 40px;
+            background: #00f2ff;
+            border-radius: 50%;
+            animation: pulse 1.2s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Wave Loading Animation */
+        .wave-loader {
+            display: flex;
+            gap: 8px;
+            align-items: flex-end;
+        }
+
+        .bar {
+            width: 10px;
+            height: 40px;
+            background: #00f2ff;
+            border-radius: 4px;
+            animation: waveBounce 1s infinite ease-in-out;
+        }
+
+        .bar:nth-child(2) { animation-delay: 0.1s; }
+        .bar:nth-child(3) { animation-delay: 0.2s; }
+        .bar:nth-child(4) { animation-delay: 0.3s; }
+        .bar:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes waveBounce {
+            0%, 100% { height: 40px; }
+            50% { height: 70px; }
+        }
+
+        /* Morphing Loading Animation */
+        .morph-loader {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #00f2ff, #ff00cc);
+            animation: morph 3s infinite ease-in-out;
+        }
+
+        @keyframes morph {
+            0% {
+                border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+                transform: rotate(0deg);
+            }
+            33% {
+                border-radius: 70% 30% 50% 50% / 50% 50% 70% 30%;
+                transform: rotate(90deg);
+            }
+            66% {
+                border-radius: 30% 70% 50% 50% / 50% 50% 30% 70%;
+                transform: rotate(180deg);
+            }
+            100% {
+                border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Bounce Loading Animation */
+        .bounce-loader {
+            display: flex;
+            gap: 10px;
+        }
+
+        .ball {
+            width: 20px;
+            height: 20px;
+            background: #00f2ff;
+            border-radius: 50%;
+            animation: bounce 0.6s ease-in-out infinite alternate;
+        }
+
+        .ball:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .ball:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Line Loading Animation */
+        .line-loader {
+            width: 80%;
+            max-width: 400px;
+            height: 4px;
+            background: #333;
+            overflow: hidden;
+            position: relative;
+            border-radius: 2px;
+        }
+
+        .line-loader::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            height: 100%;
+            width: 50%;
+            background: linear-gradient(to right, transparent, #00f2ff, transparent);
+            animation: slideLine 1.5s infinite;
+        }
+
+        @keyframes slideLine {
+            0% {
+                left: -50%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .zoom-container {
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        .zoom-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .zoom-container:hover img {
+            transform: scale(1.2);
+        }
+
+        /* Image Overlay Effect */
+        .overlay-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+        }
+
+        .overlay-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            display: block;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 242, 255, 0.4);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .overlay-container:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay-container:hover .overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="container">
+            <a href="index.html" class="logo">My Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="snippets.html" class="active">Code Snippets</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Code Snippets</h1>
+            <p>Collection of useful CSS effects and animations</p>
+        </div>
+    </section>
+
+    <section class="section snippets-section">
+        <div class="container">
+            <h2>Button Effects</h2>
+            <div class="snippets-grid">
+                <!-- Neon Glow Button -->
+                <div class="snippet-card">
+                    <div class="snippet-preview">
+                        <button class="neon-btn">Neon Glow</button>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Neon Glow Button</h3>
+                        <p>Button with neon glow effect on hover</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="css">.neon-btn {
+    color: #0ff;
+    padding: 15px 30px;
+    font-size: 20px;
+    background: transparent;
+    border: 2px solid #0ff;
+    border-radius: 10px;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff inset;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.neon-btn:hover {
+    box-shadow: 0 0 20px #0ff, 0 0 40px #0ff inset;
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- 3D Press Button -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #f2f2f2;">
+                        <button class="press-btn">3D Press</button>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>3D Press Button</h3>
+                        <p>Button with 3D press effect on click</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="css">.press-btn {
+    background: #007bff;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 8px #0056b3;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.press-btn:active {
+    box-shadow: 0 2px #0056b3;
+    transform: translateY(6px);
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Gradient Border Button -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #111;">
+                        <button class="gradient-btn">Gradient Border</button>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Gradient Border Button</h3>
+                        <p>Button with gradient border and hover effect</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="css">.gradient-btn {
+    padding: 12px 30px;
+    font-size: 18px;
+    color: white;
+    background: transparent;
+    border: 2px solid;
+    border-image: linear-gradient(45deg, #ff6ec4, #7873f5) 1;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.gradient-btn:hover {
+    background: linear-gradient(45deg, #ff6ec4, #7873f5);
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 110, 196, 0.6);
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Split Button Hover -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #111;">
+                        <button class="split-btn">
+                            <span>Split Hover</span>
+                            <span>Let's Go!</span>
+                        </button>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Split Button Hover</h3>
+                        <p>Button with split text animation on hover</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="css">.split-btn {
+    background: #222;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+.split-btn span {
+    display: inline-block;
+    transition: 0.4s ease;
+}
+
+.split-btn:hover span:first-child {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.split-btn:hover span:last-child {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.split-btn span:last-child {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 100%);
+    opacity: 0;
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Shine Effect Button -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #1a1a1a;">
+                        <button class="shine-btn">Shine Me</button>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Shine Effect Button</h3>
+                        <p>Button with shining animation on hover</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="css">.shine-btn {
+    position: relative;
+    padding: 15px 35px;
+    font-size: 18px;
+    color: #fff;
+    background: #444;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.shine-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    transform: skewX(-20deg);
+}
+
+.shine-btn:hover::before {
+    animation: shine 0.75s ease-in-out;
+}
+
+@keyframes shine {
+    from {
+        left: -75%;
+    }
+    to {
+        left: 125%;
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Pulse Animation Button -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #101010;">
+                        <button class="pulse-btn">Pulse</button>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Pulse Animation Button</h3>
+                        <p>Button with continuous pulse animation</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="css">.pulse-btn {
+    background: #e91e63;
+    color: white;
+    padding: 15px 40px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(233, 30, 99, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(233, 30, 99, 0);
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Magnetic Button -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #0e0e0e;">
+                        <div class="magnetic-container">
+                            <button class="magnetic-btn">Magnet Me</button>
+                        </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Magnetic Button</h3>
+                        <p>Button that follows cursor movement</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="css">.magnetic-container {
+    position: relative;
+    width: 200px;
+    height: 70px;
+}
+
+.magnetic-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    background: #6200ea;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}</code></pre>
+                        <pre><code class="javascript">const container = document.querySelector('.magnetic-container');
+const button = document.querySelector('.magnetic-btn');
+
+container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    button.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+});
+
+container.addEventListener('mouseleave', () => {
+    button.style.transform = 'translate(0, 0)';
+});</code></pre>
+                    </div>
+                </div>
+
+                <!-- Liquid Button -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #0f0f0f;">
+                        <button class="liquid-button"><span>Liquid Flow</span></button>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Liquid Button</h3>
+                        <p>Button with flowing liquid animation</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="css">.liquid-button {
+    position: relative;
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 20px;
+    color: #fff;
+    background: #6200ea;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.liquid-button::before,
+.liquid-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.3), transparent 70%);
+    opacity: 0.5;
+    transform: translateX(0) translateY(0);
+    animation: wave 4s linear infinite;
+    z-index: 0;
+}
+
+.liquid-button::after {
+    animation-delay: 2s;
+}
+
+@keyframes wave {
+    0% {
+        transform: translateX(-25%) translateY(0);
+    }
+    50% {
+        transform: translateX(25%) translateY(-10%);
+    }
+    100% {
+        transform: translateX(-25%) translateY(0);
+    }
+}
+
+.liquid-button span {
+    position: relative;
+    z-index: 1;
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Flip Button -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #111;">
+                        <div class="flip-container">
+                            <button class="flip-button">
+                                <div class="front">Flip Me</div>
+                                <div class="back">Nice!</div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Flip Button</h3>
+                        <p>Button with 3D flip animation on hover</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="css">.flip-container {
+    perspective: 1000px;
+}
+
+.flip-button {
+    width: 200px;
+    height: 60px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.flip-button:hover {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 60px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 10px;
+    backface-visibility: hidden;
+}
+
+.front {
+    background: #6200ea;
+}
+
+.back {
+    background: #03dac6;
+    transform: rotateY(180deg);
+}
+
+.social-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.social-buttons a {
+    width: 50px;
+    height: 50px;
+    background: #222;
+    color: white;
+    font-size: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.social-buttons a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px currentColor;
+}
+
+.social-buttons a.facebook { color: #3b5998; }
+.social-buttons a.twitter { color: #1da1f2; }
+.social-buttons a.instagram { color: #e1306c; }
+.social-buttons a.linkedin { color: #0077b5; }
+.social-buttons a.youtube { color: #ff0000; }
+
+@media (max-width: 768px) {
+    .social-buttons a {
+        width: 37.5px;
+        height: 37.5px;
+        font-size: 15px;
+    }
+}
+
+.glass-card {
+    width: 320px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.glass-card:hover {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3), 0 0 60px rgba(255, 255, 255, 0.2);
+}
+
+.glass-card h2 {
+    margin-bottom: 10px;
+    font-size: 26px;
+}
+
+.glass-card p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.card {
+    width: 320px;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    color: white;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card h2 {
+    margin-bottom: 1rem;
+}
+
+.card p {
+    margin-bottom: 1.5rem;
+    font-size: 14px;
+    color: #f1f1f1;
+}
+
+.glow-btn {
+    padding: 10px 25px;
+    font-size: 16px;
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 30px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.glow-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px #ffffff, 0 0 30px #ffffff, 0 0 60px #ffffff;
+    border-color: #ffffff;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+}
+
+.flip-card-front {
+    background: linear-gradient(135deg, #00c3ff, #ffff1c);
+}
+
+.flip-card-back {
+    background: linear-gradient(135deg, #fc466b, #3f5efb);
+    transform: rotateY(180deg);
+}
+
+/* Parallax Card */
+.parallax-card {
+    width: 300px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.1s ease;
+    transform-style: preserve-3d;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.parallax-card h2 {
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.parallax-card p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Gradient Overlay Card */
+.gradient-card {
+    position: relative;
+    width: 320px;
+    height: 420px;
+    overflow: hidden;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.gradient-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gradient-card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, rgba(255,0,150,0.6), rgba(0,204,255,0.6));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.gradient-card:hover img {
+    transform: scale(1.1);
+}
+
+.gradient-card:hover .overlay {
+    opacity: 1;
+}
+
+.gradient-card .card-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+    z-index: 2;
+}
+
+.gradient-card .card-content h3 {
+    margin: 0 0 10px;
+    font-size: 24px;
+}
+
+.gradient-card .card-content p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Hover Lift Card */
+.lift-card {
+    width: 300px;
+    height: 400px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lift-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.lift-card h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.lift-card p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Spotlight Card -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #1a1a1a; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="spotlight-card" id="spotlightCard">
+                            <h2>Spotlight Card</h2>
+                            <p>Move your mouse over this card and watch the light follow your cursor!</p>
+                        </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Spotlight Card</h3>
+                        <p>Card with spotlight effect that follows cursor movement</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="spotlight-card" id="spotlightCard"&gt;
+    &lt;h2&gt;Spotlight Card&lt;/h2&gt;
+    &lt;p&gt;Move your mouse over this card and watch the light follow your cursor!&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.spotlight-card {
+    position: relative;
+    width: 320px;
+    height: 400px;
+    background: #222;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    transition: 0.3s;
+}
+
+.spotlight-card::before {
+    content: '';
+    position: absolute;
+    top: var(--y, 50%);
+    left: var(--x, 50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 80%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: 0.1s;
+}
+
+.spotlight-card h2 {
+    margin: 30px;
+    font-size: 24px;
+}
+
+.spotlight-card p {
+    margin: 0 30px;
+    font-size: 14px;
+    color: #ccc;
+}</code></pre>
+                        <pre><code class="javascript">const card = document.getElementById('spotlightCard');
+
+card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--x', `${x}px`);
+    card.style.setProperty('--y', `${y}px`);
+});</code></pre>
+                    </div>
+                </div>
+
+                <!-- Morphing Card -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: linear-gradient(135deg, #1f1c2c, #928dab); height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="morph-card">
+                            <h2>Morphing Card</h2>
+                            <p>This card morphs its shape and background when you hover over it. Try it out!</p>
+                        </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Morphing Card</h3>
+                        <p>Card with shape and background morphing effect on hover</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="morph-card"&gt;
+    &lt;h2&gt;Morphing Card&lt;/h2&gt;
+    &lt;p&gt;This card morphs its shape and background when you hover over it. Try it out!&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.morph-card {
+    width: 300px;
+    height: 200px;
+    background: #ffffff10;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    color: #fff;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.morph-card:hover {
+    width: 340px;
+    height: 250px;
+    border-radius: 40px;
+    background: linear-gradient(135deg, #ff9a9e40, #fad0c440);
+}
+
+.morph-card h2 {
+    margin: 0 0 10px;
+    font-size: 22px;
+}
+
+.morph-card p {
+    font-size: 14px;
+    line-height: 1.5;
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Tilt Card -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #0e0e0e; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="tilt-card" id="tiltCard">
+                            <h2>Tilt Card</h2>
+                            <p>Move your mouse around and this card will tilt based on cursor position.</p>
+                        </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Tilt Card</h3>
+                        <p>Card with 3D tilt effect based on cursor position</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="tilt-card" id="tiltCard"&gt;
+    &lt;h2&gt;Tilt Card&lt;/h2&gt;
+    &lt;p&gt;Move your mouse around and this card will tilt based on cursor position.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.tilt-card {
+    width: 320px;
+    height: 420px;
+    background: linear-gradient(135deg, #ff9966, #ff5e62);
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    transition: transform 0.1s;
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+    transform-style: preserve-3d;
+}
+
+.tilt-card h2 {
+    margin-bottom: 15px;
+    font-size: 26px;
+}
+
+.tilt-card p {
+    font-size: 16px;
+    line-height: 1.5;
+}</code></pre>
+                        <pre><code class="javascript">const card = document.getElementById('tiltCard');
+
+card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = -(y - centerY) / 15;
+    const rotateY = (x - centerX) / 15;
+
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+});
+
+card.addEventListener('mouseleave', () => {
+    card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+});</code></pre>
+                    </div>
+                </div>
+
+                <!-- Shine Effect Card -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #111; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="shine-card">
+                            <h2>Shine Effect Card</h2>
+                            <p>This card gives off a sleek shine animation when you hover. Super clean and elegant!</p>
+                        </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Shine Effect Card</h3>
+                        <p>Card with elegant shine animation on hover</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="shine-card"&gt;
+    &lt;h2&gt;Shine Effect Card&lt;/h2&gt;
+    &lt;p&gt;This card gives off a sleek shine animation when you hover. Super clean and elegant!&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.shine-card {
+    position: relative;
+    width: 320px;
+    height: 420px;
+    background: #1c1c1c;
+    color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.shine-card h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.shine-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.shine-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    transform: rotate(25deg);
+    transition: all 0.6s ease;
+    pointer-events: none;
+}
+
+.shine-card:hover::before {
+    top: 100%;
+    left: 100%;
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Animated Border Card -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #0f2027; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="animated-border-card">
+                            <h2>Animated Border</h2>
+                            <p>This card has a mesmerizing animated border that loops endlessly.</p>
+                        </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Animated Border Card</h3>
+                        <p>Card with continuously rotating gradient border</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="animated-border-card"&gt;
+    &lt;h2&gt;Animated Border&lt;/h2&gt;
+    &lt;p&gt;This card has a mesmerizing animated border that loops endlessly.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.animated-border-card {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    padding: 20px;
+    background: #121212;
+    color: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    z-index: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.animated-border-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        #ff00cc,
+        #3333ff,
+        #00ffcc,
+        #ffcc00,
+        #ff00cc
+    );
+    background-size: 400%;
+    z-index: -1;
+    animation: rotateBorder 6s linear infinite;
+}
+
+.animated-border-card::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    background: #121212;
+    border-radius: 13px;
+    z-index: 1;
+}
+
+.animated-border-card h2 {
+    margin: 0 0 10px;
+    font-size: 22px;
+    z-index: 2;
+    position: relative;
+}
+
+.animated-border-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    z-index: 2;
+    position: relative;
+}
+
+@keyframes rotateBorder {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section snippets-section">
+        <div class="container">
+            <h2>Text Effects</h2>
+            <div class="snippets-grid">
+                <!-- Gradient Text -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #0e0e0e; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="gradient-text">Gradient Text</div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Gradient Text</h3>
+                        <p>Text with animated gradient color flow effect</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="gradient-text"&gt;Gradient Text&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.gradient-text {
+    font-size: 64px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ff00cc, #3333ff, #00ffcc);
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: shineText 4s linear infinite;
+}
+
+@keyframes shineText {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Typing Animation -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #111; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="typing-container">This is a typing animation</div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Typing Animation</h3>
+                        <p>Text that types out like a typewriter with blinking cursor</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="typing-container"&gt;This is a typing animation&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.typing-container {
+    font-size: 24px;
+    border-right: 2px solid #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 4s steps(24) infinite,
+               blink 0.5s step-end infinite;
+}
+
+@keyframes typing {
+    0% { width: 0; }
+    50% { width: 24ch; }
+    70% { width: 24ch; }
+    100% { width: 0; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Text Reveal -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #111; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="reveal-text">Hello, I'm Revealed!</div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Text Reveal</h3>
+                        <p>Text that fades and slides in with animation</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="reveal-text"&gt;Hello, I'm Revealed!&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.reveal-text {
+    font-size: 48px;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideFadeIn 2s ease-out forwards;
+}
+
+@keyframes slideFadeIn {
+    to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Text Glitch Effect -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #000; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="glitch" data-text="GLITCH FX">GLITCH FX</div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Text Glitch Effect</h3>
+                        <p>Text with cyberpunk-style glitch animation</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="glitch" data-text="GLITCH FX"&gt;GLITCH FX&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.glitch {
+    position: relative;
+    color: #00ffcc;
+    font-size: 64px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    color: #00ffff;
+    background: #000;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 red;
+    animation: glitchTop 1s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 blue;
+    animation: glitchBottom 1.2s infinite linear alternate-reverse;
+}
+
+@keyframes glitchTop {
+    0% { clip-path: inset(0 0 90% 0); }
+    25% { clip-path: inset(10% 0 80% 0); }
+    50% { clip-path: inset(20% 0 60% 0); }
+    75% { clip-path: inset(30% 0 40% 0); }
+    100% { clip-path: inset(40% 0 20% 0); }
+}
+
+@keyframes glitchBottom {
+    0% { clip-path: inset(80% 0 0 0); }
+    25% { clip-path: inset(60% 0 10% 0); }
+    50% { clip-path: inset(40% 0 20% 0); }
+    75% { clip-path: inset(20% 0 30% 0); }
+    100% { clip-path: inset(0 0 40% 0); }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Text Wave Animation -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #0f0f0f; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="wave">
+                            <span>W</span>
+                            <span>A</span>
+                            <span>V</span>
+                            <span>E</span>
+                            <span> </span>
+                            <span>T</span>
+                            <span>E</span>
+                            <span>X</span>
+                            <span>T</span>
+                        </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Text Wave Animation</h3>
+                        <p>Text with smooth wave animation effect</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="wave"&gt;
+    &lt;span&gt;W&lt;/span&gt;
+    &lt;span&gt;A&lt;/span&gt;
+    &lt;span&gt;V&lt;/span&gt;
+    &lt;span&gt;E&lt;/span&gt;
+    &lt;span&gt; &lt;/span&gt;
+    &lt;span&gt;T&lt;/span&gt;
+    &lt;span&gt;E&lt;/span&gt;
+    &lt;span&gt;X&lt;/span&gt;
+    &lt;span&gt;T&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.wave {
+    font-size: 48px;
+    display: flex;
+    gap: 5px;
+}
+
+.wave span {
+    display: inline-block;
+    animation: wave 1.5s infinite ease-in-out;
+}
+
+/* Stagger the wave delay for each letter */
+.wave span:nth-child(1) { animation-delay: 0s; }
+.wave span:nth-child(2) { animation-delay: 0.1s; }
+.wave span:nth-child(3) { animation-delay: 0.2s; }
+.wave span:nth-child(4) { animation-delay: 0.3s; }
+.wave span:nth-child(5) { animation-delay: 0.4s; }
+.wave span:nth-child(6) { animation-delay: 0.5s; }
+.wave span:nth-child(7) { animation-delay: 0.6s; }
+.wave span:nth-child(8) { animation-delay: 0.7s; }
+.wave span:nth-child(9) { animation-delay: 0.8s; }
+.wave span:nth-child(10) { animation-delay: 0.9s; }
+
+@keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Text Shadow Effect -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #111; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="shadow-text">GLOW TEXT</div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Text Shadow Effect</h3>
+                        <p>Text with neon glow shadow effect</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="shadow-text"&gt;GLOW TEXT&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.shadow-text {
+    font-size: 60px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow:
+        0 0 5px #0ff,
+        0 0 10px #0ff,
+        0 0 20px #0ff,
+        0 0 40px #0ff;
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Text Split Effect -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #111; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="split-text" data-text="SPLIT EFFECT"><span>SPLIT EFFECT</span></div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Text Split Effect</h3>
+                        <p>Text that splits into two parts with different colors on hover</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="split-text" data-text="SPLIT EFFECT"&gt;&lt;span&gt;SPLIT EFFECT&lt;/span&gt;&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.split-text {
+    position: relative;
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.split-text::before,
+.split-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    transition: 0.4s ease;
+}
+
+.split-text::before {
+    top: 0;
+    clip-path: inset(0 0 50% 0);
+}
+
+.split-text::after {
+    bottom: 0;
+    clip-path: inset(50% 0 0 0);
+}
+
+.split-text:hover::before {
+    transform: translateY(-10px);
+    color: #00f2ff;
+}
+
+.split-text:hover::after {
+    transform: translateY(10px);
+    color: #ff00ff;
+}
+
+/* Hide the original text behind the pseudo-elements */
+.split-text span {
+    opacity: 0;
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Text Fill Animation -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #0f0f0f; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="fill-text" data-text="FILL ME">FILL ME</div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Text Fill Animation</h3>
+                        <p>Text with fill animation effect on hover</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="fill-text" data-text="FILL ME"&gt;FILL ME&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.fill-text {
+    font-size: 60px;
+    font-weight: bold;
+    color: transparent;
+    -webkit-text-stroke: 1px #00f2ff;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.fill-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    color: #00f2ff;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: width 0.6s ease;
+}
+
+.fill-text:hover::after {
+    width: 100%;
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Text Stroke Animation -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #111; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div style="width: 100%; display: flex; justify-content: center;">
+                            <svg width="600" height="100" viewBox="0 0 600 100">
+                                <text class="stroke-text" x="300" y="50" text-anchor="middle" dominant-baseline="middle">STROKE EFFECT</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Text Stroke Animation</h3>
+                        <p>Text with animated stroke drawing effect</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div style="width: 100%; display: flex; justify-content: center;"&gt;
+    &lt;svg width="600" height="100" viewBox="0 0 600 100"&gt;
+        &lt;text class="stroke-text" x="300" y="50" text-anchor="middle" dominant-baseline="middle"&gt;STROKE EFFECT&lt;/text&gt;
+    &lt;/svg&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.stroke-text {
+    font-size: 40px;
+    fill: none;
+    stroke: #00f2ff;
+    stroke-width: 2px;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    animation: drawText 5.5s ease infinite;
+}
+
+@keyframes drawText {
+    0% {
+        stroke-dashoffset: 500;
+    }
+    72.7% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Text Gradient Animation -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #111; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="gradient-animate">GRADIENT FLOW</div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Text Gradient Animation</h3>
+                        <p>Text with smooth flowing gradient color animation</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="gradient-animate"&gt;GRADIENT FLOW&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.gradient-animate {
+    font-size: 60px;
+    font-weight: bold;
+    background: linear-gradient(
+        -45deg,
+        #ff0000,
+        #ff9900,
+        #33cc33,
+        #3399ff,
+        #cc33ff
+    );
+    background-size: 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animateGradient 5s ease infinite;
+}
+
+@keyframes animateGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section snippets-section">
+        <div class="container">
+            <h2>Loading Animations</h2>
+            <div class="snippets-grid">
+                <!-- Dot Loading Animation -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #0f0f0f; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="dot-loader">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Dot Loading Animation</h3>
+                        <p>Three bouncing dots loading animation</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="dot-loader"&gt;
+    &lt;div class="dot"&gt;&lt;/div&gt;
+    &lt;div class="dot"&gt;&lt;/div&gt;
+    &lt;div class="dot"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.dot-loader {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #00f2ff;
+    animation: bounce 1.2s infinite ease-in-out;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Spinner Loading Animation -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #111; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="spinner"></div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Spinner Loading Animation</h3>
+                        <p>Classic spinning circle loading animation</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="spinner"&gt;&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #222;
+    border-top: 6px solid #00f2ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Progress Bar Animation -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #0e0e0e; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="progress-wrapper">
+                            <div class="progress-bar"></div>
+                        </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Progress Bar Animation</h3>
+                        <p>Smooth progress bar with gradient fill animation</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="progress-wrapper"&gt;
+    &lt;div class="progress-bar"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.progress-wrapper {
+    width: 80%;
+    max-width: 500px;
+    height: 25px;
+    background: #222;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #00f2ff, #00ff94);
+    animation: progressFill 4s ease-out infinite;
+    border-radius: 50px 0 0 50px;
+}
+
+@keyframes progressFill {
+    to {
+        width: 100%;
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Skeleton Loading Animation -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #0f0f0f; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="skeleton-loader">
+                            <div class="skeleton avatar"></div>
+                            <div class="skeleton title"></div>
+                            <div class="skeleton text-line"></div>
+                            <div class="skeleton text-line short"></div>
+                        </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Skeleton Loading Animation</h3>
+                        <p>Shimmering placeholder effect for content loading</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="skeleton-loader"&gt;
+    &lt;div class="skeleton avatar"&gt;&lt;/div&gt;
+    &lt;div class="skeleton title"&gt;&lt;/div&gt;
+    &lt;div class="skeleton text-line"&gt;&lt;/div&gt;
+    &lt;div class="skeleton text-line short"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.skeleton-loader {
+    width: 300px;
+    padding: 20px;
+}
+
+.skeleton {
+    background: #333;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.title {
+    width: 80%;
+    height: 20px;
+}
+
+.text-line {
+    width: 100%;
+    height: 15px;
+}
+
+.text-line.short {
+    width: 60%;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Pulse Loading Animation -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #0f0f0f; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="pulse-loader"></div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Pulse Loading Animation</h3>
+                        <p>Pulsing circle with glowing effect</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="pulse-loader"&gt;&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.pulse-loader {
+    width: 40px;
+    height: 40px;
+    background: #00f2ff;
+    border-radius: 50%;
+    animation: pulse 1.2s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Wave Loading Animation -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #0f0f0f; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="wave-loader">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Wave Loading Animation</h3>
+                        <p>Animated bars creating a wave effect</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="wave-loader"&gt;
+    &lt;div class="bar"&gt;&lt;/div&gt;
+    &lt;div class="bar"&gt;&lt;/div&gt;
+    &lt;div class="bar"&gt;&lt;/div&gt;
+    &lt;div class="bar"&gt;&lt;/div&gt;
+    &lt;div class="bar"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.wave-loader {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.bar {
+    width: 10px;
+    height: 40px;
+    background: #00f2ff;
+    border-radius: 4px;
+    animation: waveBounce 1s infinite ease-in-out;
+}
+
+.bar:nth-child(2) { animation-delay: 0.1s; }
+.bar:nth-child(3) { animation-delay: 0.2s; }
+.bar:nth-child(4) { animation-delay: 0.3s; }
+.bar:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes waveBounce {
+    0%, 100% { height: 40px; }
+    50% { height: 70px; }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Morphing Loading Animation -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #0f0f0f; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="morph-loader"></div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Morphing Loading Animation</h3>
+                        <p>Shape-shifting loader with gradient colors</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="morph-loader"&gt;&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.morph-loader {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #00f2ff, #ff00cc);
+    animation: morph 3s infinite ease-in-out;
+}
+
+@keyframes morph {
+    0% {
+        border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+        transform: rotate(0deg);
+    }
+    33% {
+        border-radius: 70% 30% 50% 50% / 50% 50% 70% 30%;
+        transform: rotate(90deg);
+    }
+    66% {
+        border-radius: 30% 70% 50% 50% / 50% 50% 30% 70%;
+        transform: rotate(180deg);
+    }
+    100% {
+        border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+        transform: rotate(360deg);
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Bounce Loading Animation -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #0f0f0f; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="bounce-loader">
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                        </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Bounce Loading Animation</h3>
+                        <p>Three bouncing balls with staggered animation</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="bounce-loader"&gt;
+    &lt;div class="ball"&gt;&lt;/div&gt;
+    &lt;div class="ball"&gt;&lt;/div&gt;
+    &lt;div class="ball"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.bounce-loader {
+    display: flex;
+    gap: 10px;
+}
+
+.ball {
+    width: 20px;
+    height: 20px;
+    background: #00f2ff;
+    border-radius: 50%;
+    animation: bounce 0.6s ease-in-out infinite alternate;
+}
+
+.ball:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.ball:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Circle Loading Animation -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #111; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="circle-loader"></div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Circle Loading Animation</h3>
+                        <p>Spinning circle with gradient border effect</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="circle-loader"&gt;&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.circle-loader {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #333;
+    border-top: 6px solid #00f2ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Line Loading Animation -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #0e0e0e; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="line-loader"></div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Line Loading Animation</h3>
+                        <p>Sliding line with gradient effect</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="line-loader"&gt;&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.line-loader {
+    width: 80%;
+    max-width: 400px;
+    height: 4px;
+    background: #333;
+    overflow: hidden;
+    position: relative;
+    border-radius: 2px;
+}
+
+.line-loader::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(to right, transparent, #00f2ff, transparent);
+    animation: slideLine 1.5s infinite;
+}
+
+@keyframes slideLine {
+    0% {
+        left: -50%;
+    }
+    100% {
+        left: 100%;
+    }
+}</code></pre>
+        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section snippets-section">
+        <div class="container">
+            <h2>Image Effects</h2>
+            <div class="snippets-grid">
+                <!-- Image Zoom Effect -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #111; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="zoom-container">
+                            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Zoom Image" />
+                    </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Image Zoom Effect</h3>
+                        <p>Smooth zoom effect on image hover</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="zoom-container"&gt;
+    &lt;img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Zoom Image" /&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.zoom-container {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.zoom-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.zoom-container:hover img {
+    transform: scale(1.2);
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Image Overlay Effect -->
+                <div class="snippet-card">
+                    <div class="snippet-preview" style="background: #111; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <div class="overlay-container">
+                            <img src="https://picsum.photos/id/237/300/200" alt="Overlay Image" />
+                            <div class="overlay">Hovered!</div>
+                        </div>
+                    </div>
+                    <div class="snippet-info">
+                        <h3>Image Overlay Effect</h3>
+                        <p>Image with smooth scale and overlay effect on hover</p>
+                        <button class="show-code">Show Code</button>
+                    </div>
+                    <div class="code-container">
+                        <pre><code class="html">&lt;div class="overlay-container"&gt;
+    &lt;img src="https://picsum.photos/id/237/300/200" alt="Overlay Image" /&gt;
+    &lt;div class="overlay"&gt;Hovered!&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        <pre><code class="css">.overlay-container {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.overlay-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 242, 255, 0.4);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.overlay-container:hover img {
+    transform: scale(1.1);
+}
+
+.overlay-container:hover .overlay {
+    opacity: 1;
+}</code></pre>
+                    </div>
+                </div>
+                    </div>
+                    </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Portfolio. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) { // Only run theme toggle code if the button exists
+        const icon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        updateIcon(currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+        
+        function updateIcon(theme) {
+            icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    }
+
+    // Code Display Toggle
+    document.querySelectorAll('.show-code').forEach(button => {
+        button.addEventListener('click', () => {
+            const codeContainer = button.parentElement.nextElementSibling;
+            
+            // Force display none/block instead of toggling
+            if (getComputedStyle(codeContainer).display === 'none') {
+                codeContainer.style.display = 'block';
+                hljs.highlightElement(codeContainer.querySelector('code'));
+            } else {
+                codeContainer.style.display = 'none';
+            }
+        });
+    });
+
+    // Rest of your code for magnetic button, parallax card, etc.
+});
+        // Magnetic Button Effect
+        const magneticContainer = document.querySelector('.magnetic-container');
+        const magneticButton = document.querySelector('.magnetic-btn');
+        
+        magneticContainer.addEventListener('mousemove', (e) => {
+            const rect = magneticContainer.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+            magneticButton.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+        });
+        
+        magneticContainer.addEventListener('mouseleave', () => {
+            magneticButton.style.transform = 'translate(0, 0)';
+        });
+
+        // Parallax Card Effect
+        const parallaxCard = document.getElementById('parallaxCard');
+
+        parallaxCard.addEventListener('mousemove', (e) => {
+            const rect = parallaxCard.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = -(y - centerY) / 15;
+            const rotateY = (x - centerX) / 15;
+
+            parallaxCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        parallaxCard.addEventListener('mouseleave', () => {
+            parallaxCard.style.transform = `rotateX(0deg) rotateY(0deg)`;
+        });
+
+        // Spotlight Card Effect
+        const spotlightCard = document.getElementById('spotlightCard');
+
+        spotlightCard.addEventListener('mousemove', (e) => {
+            const rect = spotlightCard.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            spotlightCard.style.setProperty('--x', `${x}px`);
+            spotlightCard.style.setProperty('--y', `${y}px`);
+        });
+
+        // Tilt Card Effect
+        const tiltCard = document.getElementById('tiltCard');
+
+        tiltCard.addEventListener('mousemove', (e) => {
+            const rect = tiltCard.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = -(y - centerY) / 15;
+            const rotateY = (x - centerX) / 15;
+
+            tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        tiltCard.addEventListener('mouseleave', () => {
+            tiltCard.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        });
+    </script>
+</body>
+</html> 

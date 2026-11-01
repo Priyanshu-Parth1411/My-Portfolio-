@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Hobbies</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --accent-color: #6366f1;
+            --accent-hover: #4f46e5;
+            --text-color: #1e293b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --card-shadow: 0 10px 20px rgba(99, 102, 241, 0.1);
+            --nav-bg: #ffffff;
+            --border-color: rgba(99, 102, 241, 0.2);
+            --gradient-start: #6366f1;
+            --gradient-end: #818cf8;
+        }
+
+        [data-theme="dark"] {
+            --accent-color: #818cf8;
+            --accent-hover: #6366f1;
+            --text-color: #f1f5f9;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            --nav-bg: #1e293b;
+            --border-color: rgba(129, 140, 248, 0.2);
+            --gradient-start: #818cf8;
+            --gradient-end: #a5b4fc;
+        }
+
+        .hobby-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hobby-card.animate-fade-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hobby-card:hover {
+            animation: none;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        .hobby-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .hobby-card:hover i {
+            transform: scale(1.2) rotate(5deg);
+            color: var(--accent-hover);
+        }
+
+        .hobby-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .hobby-card:hover h3 {
+            color: var(--accent-hover);
+        }
+
+        .hobby-card p {
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .hobby-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stat-item {
+            flex: 1;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .page-header {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--card-bg);
+            padding: 4rem 0;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            text-align: center;
+        }
+
+        .page-header.animate-fade-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .page-header h1 {
+            background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header .section-description {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 0;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes slideInFromLeft {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInFromRight {
+            0% { transform: translateX(100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        .hobby-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hobby-card:hover .hobby-icon {
+            animation: none;
+            transform: scale(1.1);
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .photo-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            box-shadow: var(--card-shadow);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .photo-item.animate-fade-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .photo-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 1.5rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .photo-item:hover .photo-overlay {
+            animation: none;
+            transform: scale(1.1);
+        }
+
+        .photo-overlay h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .photo-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .photo-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .photo-gallery {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="top-nav">
+        <div class="container">
+            <a href="index.html" class="logo">My Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="hobbies.html" class="active">Hobbies</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="snippets.html">Code Snippets</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header animate-on-scroll">
+        <div class="container">
+            <h1>My Hobbies</h1>
+            <p class="section-description">Activities that fuel my creativity and passion</p>
+        </div>
+    </section>
+
+    <!-- Hobbies Content -->
+    <section class="section">
+        <div class="container">
+            <div class="hobbies-grid">
+                <div class="hobby-card animate-on-scroll">
+                    <i class="fas fa-camera"></i>
+                    <h3>Photography</h3>
+                    <p>Capturing moments and exploring the art of visual storytelling through my lens.</p>
+                    <div class="hobby-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">100+</div>
+                            <div class="stat-label">Photos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">Categories</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hobby-card animate-on-scroll">
+                    <i class="fas fa-code"></i>
+                    <h3>Coding Projects</h3>
+                    <p>Building innovative solutions and exploring new technologies in my free time.</p>
+                    <div class="hobby-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">15+</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">4</div>
+                            <div class="stat-label">Languages</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hobby-card animate-on-scroll">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Arduino Tinkering</h3>
+                    <p>Creating electronic projects and experimenting with hardware programming.</p>
+                    <div class="hobby-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">8+</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Components</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hobby-card animate-on-scroll">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI Experimentation</h3>
+                    <p>Exploring artificial intelligence and machine learning through personal projects.</p>
+                    <div class="hobby-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">5+</div>
+                            <div class="stat-label">Models</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">2</div>
+                            <div class="stat-label">Frameworks</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-header animate-on-scroll">
+        <div class="container">
+            <h1>Photography</h1>
+            <p>My journey in photography</p>
+        </div>
+    </section>
+
+    <!-- Photography Gallery -->
+    <section class="section">
+        <div class="container">
+            <div class="photo-gallery">
+                <div class="photo-item animate-on-scroll">
+                    <img src="./1.jpg" alt="Photography 1" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 1</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./2.jpg" alt="Photography 2" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 2</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./3.jpg" alt="Photography 3" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 3</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./4.jpg" alt="Photography 4" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 4</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./5.jpg" alt="Photography 5" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 5</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./6.jpg" alt="Photography 6" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 6</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./7.jpg" alt="Photography 7" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 7</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./8.jpg" alt="Photography 8" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 8</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./9.jpg" alt="Photography 9" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 9</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./10.jpg" alt="Photography 10" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 10</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./11.jpg" alt="Photography 11" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 11</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./12.jpg" alt="Photography 12" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 12</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./13.jpg" alt="Photography 13" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 13</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./14.jpg" alt="Photography 14" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 14</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./15.jpg" alt="Photography 15" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 15</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./16.jpg" alt="Photography 16" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 16</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./17.jpg" alt="Photography 17" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 17</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./18.jpg" alt="Photography 18" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 18</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./19.jpg" alt="Photography 19" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 19</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./20.jpg" alt="Photography 20" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 20</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./21.jpg" alt="Photography 21" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 21</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./22.jpg" alt="Photography 22" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 22</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./23.jpg" alt="Photography 23" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 23</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./24.jpg" alt="Photography 24" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 24</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./25.jpg" alt="Photography 25" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 25</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./26.jpg" alt="Photography 26" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 26</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./27.jpg" alt="Photography 27" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 27</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./28.jpg" alt="Photography 28" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 28</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./29.jpg" alt="Photography 29" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 29</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./30.jpg" alt="Photography 30" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 30</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./31.jpg" alt="Photography 31" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 31</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./32.jpg" alt="Photography 32" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 32</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./33.jpg" alt="Photography 33" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 33</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./34.jpg" alt="Photography 34" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 34</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./35.jpg" alt="Photography 35" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 35</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./36.jpg" alt="Photography 36" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 36</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./37.jpg" alt="Photography 37" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 37</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./38.jpg" alt="Photography 38" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 38</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./39.jpg" alt="Photography 39" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 39</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./40.jpg" alt="Photography 40" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 40</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./41.jpg" alt="Photography 41" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 41</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./42.jpg" alt="Photography 42" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 42</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./43.jpg" alt="Photography 43" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 43</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./44.jpg" alt="Photography 44" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 44</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./45.jpg" alt="Photography 45" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 45</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+                <div class="photo-item animate-on-scroll">
+                    <img src="./46.jpg" alt="Photography 46" class="gallery-image">
+                    <div class="photo-overlay">
+                        <h3>Photo 46</h3>
+                        <p>Captured with passion</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-up');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Update observer to include photo items
+        document.querySelectorAll('.page-header, .hobby-card, .photo-item').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html> 
